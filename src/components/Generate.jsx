@@ -104,7 +104,7 @@ export default function Generate() {
         "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
         {
           headers: {
-            Authorization: "Bearer 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",
+            Authorization: "Bearer ",
             "Content-Type": "application/json",
           },
           method: "POST",

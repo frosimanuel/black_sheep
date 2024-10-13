@@ -1,26 +1,24 @@
-# Juno: React Starter Kit
+# Black Sheep 🤘
 
-```sh
-npm create juno@latest -- --template react-starter
-```
+### AI Generated NFT collection
 
-> 🧑‍🚀 **Seasoned dev?** Delete this file. Have fun!
+An example app for the black sheep minting process developed with help of [Juno](https://juno.build) using [React](https://react.dev).
 
-![A screenshot of the starter kit](https://raw.githubusercontent.com/junobuild/create-juno/main/screenshots/screenshot-starter.png)
+It's made as a mock-up app for a demo presentation.
 
-A starter kit developed for [Juno](https://juno.build) using [React](https://react.dev/).
+## ✨ Features 
 
-## ✨ Links & Resources
-
-- Looking to get started with Juno? Check out the [documentation](https://juno.build).
-- Have a look at [React](https://react.dev/) for question regarding the templates.
-- Got questions, comments or feedback? [Join our discord](https://discord.gg/wHZ57Z2RAG) or [OpenChat](https://oc.app/community/vxgpi-nqaaa-aaaar-ar4lq-cai/?ref=xanzv-uaaaa-aaaaf-aneba-cai).
+- Internet Identity login
+- NFID for login abstraction and accessibility
+- Transformation of user input into atributes via a model using HTTPS
+- Merge those atributes with another model for image generation serverside. 
+- Upload generated image to the storage canister and mint.
 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command          | Action                                                      |
+| Run Locally          | Action                                                      |
 | :--------------- | :---------------------------------------------------------- |
 | `npm install`    | Installs dependencies                                       |
 | `npm run dev`    | Starts frontend dev server at `localhost:5173`              |
@@ -30,5 +28,4 @@ All commands are run from the root of the project, from a terminal:
 
 ## 🚀 Launch
 
-Explore this [guide](https://juno.build/docs/add-juno-to-an-app/create-a-satellite) to launch your Satellite into orbit via Juno's [administration console](https://console.juno.build).
-# black_sheep
+If you don't know how juno works, check this [guide](https://juno.build/docs/add-juno-to-an-app/create-a-satellite)

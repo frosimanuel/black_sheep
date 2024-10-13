@@ -5,25 +5,25 @@ import { Button } from "@headlessui/react"
 import { Loader2, Zap } from "lucide-react"
 import Replicate from "replicate";
 const blackSheepImages = [
-  '/images/blacksheep/sheeps/BLACK_SHEEP_1.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_2.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_3.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_4.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_5.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_6.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_7.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_8.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_9.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_10.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_11.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_12.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_13.png',
-  '/images/blacksheep/sheeps/BLACK_SHEEP_14.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_1.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_2.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_3.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_4.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_5.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_6.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_7".png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_8.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_9.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_10.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_11.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_12.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_13.png',
+    '/images/blacksheep/sheeps/BLACK_SHEEP_14.png',
 ]
 
 const selectRandomImage = () => {
-  const randomIndex = Math.floor(Math.random() * blackSheepImages.length)
-  setSelectedImage(blackSheepImages[randomIndex])
+    const randomIndex = Math.floor(Math.random() * blackSheepImages.length)
+    setSelectedImage(blackSheepImages[randomIndex])
 }
 export default function Generate() {
     const [inputValue, setInputValue] = useState('')
@@ -50,22 +50,22 @@ export default function Generate() {
     }, [isGenerating, isMinting])
 
     const handleGenerate = () => {
-      setIsGenerating(true)
-      // Select a random image when generating
-      const randomIndex = Math.floor(Math.random() * blackSheepImages.length)
-      setSelectedImage(blackSheepImages[randomIndex])
-      setTimeout(() => {
-        setIsGenerating(false)
-        setIsGenerated(true)
-      }, 5000)
+        setIsGenerating(true)
+        // Select a random image when generating
+        const randomIndex = Math.floor(Math.random() * blackSheepImages.length)
+        setSelectedImage(blackSheepImages[randomIndex])
+        setTimeout(() => {
+            setIsGenerating(false)
+            setIsGenerated(true)
+        }, 5000)
     }
 
     const handleMint = () => {
-      setIsMinting(true)
-      setTimeout(() => {
-        setIsMinting(false)
-        setIsSuccess(true)
-      }, 3000)
+        setIsMinting(true)
+        setTimeout(() => {
+            setIsMinting(false)
+            setIsSuccess(true)
+        }, 3000)
     }
 
     const generateImage = async () => {
@@ -81,7 +81,7 @@ export default function Generate() {
             // This is a placeholder. In a real application, you would call your AI image generation API here.
             const data = await replicate.run("black-forest-labs/flux-schnell", { input: { prompt } })
             console.log(data)
-            
+
             if (data) {
                 setImageUrl(data)
             } else {
@@ -100,19 +100,19 @@ export default function Generate() {
     }
 
     async function query(data) {
-      const response = await fetch(
-        "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
-        {
-          headers: {
-            Authorization: "Bearer ",
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          body: JSON.stringify(data),
-        }
-      );
-      const result = await response.json();
-      return result;
+        const response = await fetch(
+            "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
+            {
+                headers: {
+                    Authorization: "Bearer ",
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(data),
+            }
+        );
+        const result = await response.json();
+        return result;
     }
 
     return (
@@ -123,6 +123,17 @@ export default function Generate() {
                 <div className="absolute top-0 left-0 w-2 h-full bg-white"></div>
                 <div className="absolute top-0 right-0 w-2 h-full bg-white"></div>
                 <h1 className="text-4xl font-bold text-center mb-8 pixel-text">HOW?</h1>
+                {isGenerating ? (
+                    <>
+                        <img
+                            src={"/images/blacksheep/fuck-loader.gif"}
+                            alt="Generating ..."
+                            className="w-full border-4 border-white"
+                        />
+                    </>
+                ) : (
+                    <></>
+                )}
                 <input
                     type="text"
                     placeholder="DEFINE YOUR BLACKSHEEPNESS"
@@ -132,7 +143,7 @@ export default function Generate() {
                     className="bg-black border-4 border-white text-white placeholder-gray-500 px-4 py-2 w-full"
                 />
                 <button
-                    onClick={handleGenerate} 
+                    onClick={handleGenerate}
                     disabled={!inputValue || isGenerating || isGenerated}
                     className="w-full bg-white text-black border-4 border-white hover:bg-gray-200 pixel-text"
                 >
@@ -144,17 +155,17 @@ export default function Generate() {
                     ) : (
                         'GENERATE'
                     )}
-                </button> 
-                
+                </button>
+
                 {isGenerated && (
                     <div className="space-y-4">
-                        <img 
-                            src={selectedImage} 
-                            alt="Generated NFT" 
+                        <img
+                            src={selectedImage}
+                            alt="Generated NFT"
                             className="w-full border-4 border-white"
                         />
-                        <Button 
-                            onClick={handleMint} 
+                        <Button
+                            onClick={handleMint}
                             disabled={isMinting || isSuccess}
                             className="w-full bg-white text-black border-4 border-white hover:bg-gray-200 pixel-text"
                         >
@@ -172,9 +183,9 @@ export default function Generate() {
                 {isSuccess && (
                     <div className="text-center text-green-400 pixel-text">
                         <p>SUCCESSFULLY MINTED!</p>
-                        <a 
-                            href="https://www.icpexplorer.org/#/tx/84c531534ca9a8be531cf1702d180e10f4df1ebfc583ebca61e5930556fb7f4c" 
-                            target="_blank" 
+                        <a
+                            href="https://www.icpexplorer.org/#/tx/84c531534ca9a8be531cf1702d180e10f4df1ebfc583ebca61e5930556fb7f4c"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-400 hover:underline"
                         >
